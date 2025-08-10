@@ -1,6 +1,4 @@
 export const Summary = ({ data }: { data: Record<string, unknown> }) => {
-  console.log(data, "Summary Data");
-
   return (
     <div className="space-y-4">
       {Object.entries(data).map(([key, value]) => (
