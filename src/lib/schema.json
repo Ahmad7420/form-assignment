@@ -117,7 +117,7 @@
           "dependencies": [
             {
               "key": "hasParking",
-              "equals": true
+              "notEmpty": true
             }
           ]
         },

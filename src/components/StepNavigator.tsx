@@ -13,12 +13,13 @@ export const StepNavigator: React.FC<IProps> = ({
         <Button
           type="button"
           variant="outline"
+          className="hover:cursor-pointer"
           onClick={() => setStep(step - 1)}
         >
           Back
         </Button>
       )}
-      <Button type="submit">
+      <Button type="submit" className="hover:cursor-pointer">
         {step === totalSteps - 1 ? "Submit" : "Next"}
       </Button>
     </div>

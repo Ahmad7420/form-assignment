@@ -25,6 +25,7 @@ export const FieldRenderer: React.FC<IProps> = ({ field, formValues }) => {
   if (!checkDependencies(field.dependencies, formValues)) {
     return null;
   }
+
   const error = errors[field.key];
 
   switch (field.type) {
@@ -49,7 +50,10 @@ export const FieldRenderer: React.FC<IProps> = ({ field, formValues }) => {
       return (
         <div className="mb-4">
           <label className="block mb-1">{field.label}</label>
-          <Select onValueChange={(val) => setValue(field.key, val)}>
+          <Select
+            value={formValues[field.key] as string}
+            onValueChange={(val) => setValue(field.key, val)}
+          >
             <SelectTrigger>
               <SelectValue placeholder="Select an option" />
             </SelectTrigger>
@@ -70,7 +74,10 @@ export const FieldRenderer: React.FC<IProps> = ({ field, formValues }) => {
     case "checkbox":
       return (
         <div className="flex items-center mb-4 space-x-2">
-          <Checkbox {...register(field.key)} />
+          <Checkbox
+            onCheckedChange={(val) => setValue(field.key, val)}
+            checked={formValues[field.key] === true}
+          />
           <label>{field.label}</label>
           {error && (
             <p className="text-sm text-red-600 mt-1">This field is required</p>
